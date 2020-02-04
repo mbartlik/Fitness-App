@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController { //Home screen
+    
+    // Sets buttons and logo for home screen
     let logo = UIImageView()
     let newWorkoutButton = UIButton()
     let existingWorkoutsButton = UIButton()
     let suggestedWorkoutsButton = UIButton()
     let settingsButton = UIButton()
     
+    // Sets up arrays to store values for sequential exercises and times for each exercise
     var userExerciseNames: [[String]] = []
     var userExerciseTimes: [[Double]] = []
     var userWorkoutNames: [String] = []
@@ -51,6 +54,8 @@ class ViewController: UIViewController {
         newWorkoutButton.backgroundColor = .blue
         newWorkoutButton.setTitle("Create New Workout", for: .normal)
         newWorkoutButton.setTitleColor(.white, for: .normal)
+        
+        //Links this to the page to make a new workout
         newWorkoutButton.addTarget(self, action: #selector(newWorkoutButtonPressed), for: .touchUpInside)
         
         view.addSubview(newWorkoutButton)
@@ -69,7 +74,7 @@ class ViewController: UIViewController {
     }
     
     @objc
-    func newWorkoutButtonPressed() {
+    func newWorkoutButtonPressed() { //Sends to the new workout page
         print("Pressed")
         let newWorkoutPage = NewWorkout()
         self.navigationController?.pushViewController(newWorkoutPage, animated: true)
@@ -79,6 +84,8 @@ class ViewController: UIViewController {
         existingWorkoutsButton.backgroundColor = .blue
         existingWorkoutsButton.setTitle("My Workouts", for: .normal)
         existingWorkoutsButton.setTitleColor(.white, for: .normal)
+        
+        //Sets up link to existing workouts page
         existingWorkoutsButton.addTarget(self, action: #selector(existingWorkoutsButtonPressed), for: .touchUpInside)
         
         view.addSubview(existingWorkoutsButton)
@@ -106,6 +113,8 @@ class ViewController: UIViewController {
         suggestedWorkoutsButton.backgroundColor = .blue
         suggestedWorkoutsButton.setTitle("Suggested Workouts", for: .normal)
         suggestedWorkoutsButton.setTitleColor(.white, for: .normal)
+        
+        //Sets up link to suggested workouts page
         suggestedWorkoutsButton.addTarget(self, action: #selector(suggestedWorkoutsButtonPressed), for: .touchUpInside)
         
         view.addSubview(suggestedWorkoutsButton)
@@ -123,13 +132,13 @@ class ViewController: UIViewController {
     }
     
     @objc
-    func suggestedWorkoutsButtonPressed() {
+    func suggestedWorkoutsButtonPressed() { //Sends to suggested workouts page
         print("Pressed suggested workouts")
         let existingWorkoutsPage = ExistingWorkouts()
         self.navigationController?.pushViewController(existingWorkoutsPage, animated: true)
     }
     
-    func addSettingsButton() {
+    func addSettingsButton() { //Sets up settings button
         settingsButton.backgroundColor = .blue
         settingsButton.setTitle("Settings", for: .normal)
         settingsButton.setTitleColor(.white, for: .normal)

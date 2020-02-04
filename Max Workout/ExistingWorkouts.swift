@@ -17,11 +17,12 @@ class ExistingWorkouts: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     let goToWorkoutButton = UIButton()
     
+    //Preset workout names
     var workouts: [String] = [
         "Workout 1", "Workout 2", "Workout 3", "Workout 4", "Workout 5", "Workout 6", "Workout 7", "Workout 8", "Workout 9", "Workout 10"
     ]
     
-
+    //Preset workouts
     var exerciseNames: [[String]] = [
         ["Get Ready","Plank", "Get Ready", "V-Sit", "Get Ready", "15 Pushups", "Get Ready", "Plank"],
         ["Get Ready","30 Pushups", "Get Ready", "20 Situps", "Get Ready", "Plank", "Get Ready", "10 Pushups"],
@@ -34,9 +35,10 @@ class ExistingWorkouts: UIViewController, UITableViewDelegate, UITableViewDataSo
         ["Blank"],
         ["Blank"],
     ]
-
+    
+    //Preset exercise times
     var exerciseTimes: [[Double]] = [
-        [3,6,3,5,3,4,3,3],
+        [3,4,3,5,3,4,3,3],
         [3,80,3,45,3,45,3,30],
         [3,90,3,30,3,30,3,45],
         [30],
@@ -68,11 +70,10 @@ class ExistingWorkouts: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         view.backgroundColor = .white
         setupWorkoutsList()
-//        setupWorkoutTextField()
-//        setupGoToWorkoutButton()
                 
     }
     
+    //List of workouts to pick from
     func setupWorkoutsList() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,119 +94,24 @@ class ExistingWorkouts: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
-    
+    //Sets up tableview of list of workouts
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workouts.count
-        
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = workouts[indexPath.row]
+        cell.textLabel?.text = workouts[indexPath.row] //Picks which workout will be shown in each cell
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index: Int = indexPath.row
         let displayWorkoutPage = DisplayWorkout()
+        
+        //Sets the variables on the next page equal to the variables on this page
         displayWorkoutPage.exerciseNames = exerciseNames[index]
         displayWorkoutPage.exerciseTimes = exerciseTimes[index]
         
         self.navigationController?.pushViewController(displayWorkoutPage, animated: true)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    func setupWorkoutTextField() {
-//        view.addSubview(workoutTextField)
-//        workoutTextField.placeholder = "Enter Workout"
-//        workoutTextField.borderStyle = .roundedRect
-//
-//        workoutTextField.translatesAutoresizingMaskIntoConstraints = false
-//
-//        let xConstraint = workoutTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-//        let topConstraint = workoutTextField.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 50)
-//
-//        xConstraint.isActive = true
-//        topConstraint.isActive = true
-//
-//    }
-//
-//    func setupGoToWorkoutButton() {
-//        goToWorkoutButton.backgroundColor = .blue
-//        goToWorkoutButton.setTitle("Go", for: .normal)
-//        goToWorkoutButton.setTitleColor(.white, for: .normal)
-//        goToWorkoutButton.addTarget(self, action: #selector(goButtonPressed), for: .touchUpInside)
-//
-//        view.addSubview(goToWorkoutButton)
-//        goToWorkoutButton.translatesAutoresizingMaskIntoConstraints = false
-//
-//        let xConstraint = goToWorkoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-//        let topConstraint = goToWorkoutButton.topAnchor.constraint(equalTo: workoutTextField.bottomAnchor, constant: 30)
-//        let width = goToWorkoutButton.widthAnchor.constraint(equalToConstant: 100)
-//
-//        xConstraint.isActive = true
-//        topConstraint.isActive = true
-//        width.isActive = true
-//    }
-//
-//    @objc
-//    func goButtonPressed() {
-//        if let workout = workoutTextField.text {
-//
-//            let displayWorkoutPage = DisplayWorkout()
-//
-//            var index: Int = 0
-//            if workoutTextField.text == "Workout 1" {
-//                index = 0
-//            }
-//            else if workoutTextField.text == "Workout 2" {
-//                index = 1
-//            }
-//            else if workoutTextField.text == "Workout 3" {
-//                index = 2
-//            }
-//            else if workoutTextField.text == "Workout 4" {
-//                index = 3
-//            }
-//            else if workoutTextField.text == "Workout 5" {
-//                index = 4
-//            }
-//            else if workoutTextField.text == "Workout 6" {
-//                index = 5
-//            }
-//            else if workoutTextField.text == "Workout 7" {
-//                index = 6
-//            }
-//            else if workoutTextField.text == "Workout 8" {
-//                index = 7
-//            }
-//            else if workoutTextField.text == "Workout 9" {
-//                index = 8
-//            }
-//            else if workoutTextField.text == "Workout 10" {
-//                index = 9
-//            }
-//
-//
-//            displayWorkoutPage.workout = workoutTextField.text ?? "empty"
-//            displayWorkoutPage.exerciseNames = exerciseNames[index]
-//            displayWorkoutPage.exerciseTimes = exerciseTimes[index]
-//
-//            self.navigationController?.pushViewController(displayWorkoutPage, animated: true)
-//
-//        }
-//    }
-//
-//
 }

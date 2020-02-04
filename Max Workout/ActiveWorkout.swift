@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ActiveWorkout: UIViewController {
+class ActiveWorkout: UIViewController { //For when a workout is being run
     var exerciseNames: [String] = []
     var exerciseTimes: [Double] = []
     
@@ -30,6 +30,7 @@ class ActiveWorkout: UIViewController {
     
     func runWorkout() {
         timeLeft = exerciseTimes[count]
+        //Creates the timer
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(onTimerFires), userInfo: nil, repeats: true)
         
     }
@@ -39,13 +40,13 @@ class ActiveWorkout: UIViewController {
         showExerciseName()
         print("Firing")
         showTime(currentTime: timeLeft)
-        timeLeft -= 0.1
+        timeLeft -= 0.1 //Every timer fire the timer goes down 1/10 second
         print(timeLeft)
         if timeLeft < 0 {
             timer?.invalidate()
             timer = nil
             count += 1
-            if count < exerciseNames.count {
+            if count < exerciseNames.count { //Proceeds to the next exercise
                 runWorkout()
             }
             else {
@@ -55,7 +56,7 @@ class ActiveWorkout: UIViewController {
         }
     }
     
-    func showExerciseName() {
+    func showExerciseName() { //Displays exercise name
         view.addSubview(exerciseName)
         exerciseName.text = exerciseNames[count]
         if exerciseName.text == "Get Ready" {
@@ -70,7 +71,7 @@ class ActiveWorkout: UIViewController {
         bottomAnchor.isActive = true
     }
     
-    func showTime(currentTime: Double) {
+    func showTime(currentTime: Double) { //Displays the current time
         view.addSubview(time)
         time.text = String(round(currentTime * 1000)/1000)
         time.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +84,7 @@ class ActiveWorkout: UIViewController {
     }
     
     
-    func finishWorkout() {
+    func finishWorkout() { //Display for the completed workout
         time.text = "Workout Complete"
         exerciseName.text = ""
     }

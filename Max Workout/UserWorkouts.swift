@@ -11,6 +11,7 @@ import UIKit
 
 class UserWorkouts: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
     var exerciseNames: [[String]] = []
     var exerciseTimes: [[Double]] = []
     
@@ -83,29 +84,6 @@ class UserWorkouts: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         self.navigationController?.pushViewController(displayWorkoutPage, animated: true)
     }
-    
-//    func makeCustomBackButton() {
-//        self.navigationItem.hidesBackButton = true
-//        var backButton = UIButton()
-//        backButton.setTitle("Home", for: .normal)
-//        backButton.setTitleColor(.blue, for: .normal)
-//        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
-//        
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-//    }
-//    
-//    
-//    @objc
-//    func backButtonPressed() {
-//        let homePage = ViewController()
-//        
-//        homePage.userExerciseNames = exerciseNames
-//        homePage.userExerciseTimes = exerciseTimes
-//        homePage.userWorkoutNames = workouts
-//        
-//        self.navigationController?.pushViewController(homePage, animated: false)
-//        
-//    }
         
     
     
